@@ -25,6 +25,20 @@ echo $2 | perl -we 'BEGIN { @k = unpack "C*", pack "H*", "1734516E8BA8C5E2FF1C39
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -restart -agent -console
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate
 
+# Optimizations
+defaults write com.apple.loginwindow autoLoginUser -bool true
+sudo defaults write /Library/Preferences/com.apple.loginwindow DesktopPicture ""
+defaults write com.apple.Accessibility DifferentiateWithoutColor -int 1
+defaults write com.apple.Accessibility ReduceMotionEnabled -int 1
+defaults write com.apple.universalaccess reduceMotion -int 1
+defaults write com.apple.universalaccess reduceTransparency -int 1
+defaults write com.apple.Accessibility ReduceMotionEnabled -int 1
+sudo /usr/bin/defaults write .GlobalPreferences MultipleSessionsEnabled -bool TRUE
+defaults write "Apple Global Domain" MultipleSessionsEnabled -bool true
+defaults write /Library/Preferences/com.apple.loginwindow.plist SHOWFULLNAME -bool true
+defaults write com.apple.loginwindow AllowList -string '*'
+
+
 #install ngrok
 brew install --cask ngrok
 
